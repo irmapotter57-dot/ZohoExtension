@@ -1,0 +1,27 @@
+{
+  "manifest_version": 3,
+  "name": "Zoho AI Agent",
+  "version": "0.2.0",
+  "description": "AI assistant for Zoho CRM and Books -- testing phase",
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://*.zoho.com/*",
+    "https://*.catalystserverless.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://*.zoho.com/*"],
+      "js": ["panel/panel.js", "content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["panel/panel.css"],
+      "matches": ["https://*.zoho.com/*"]
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}
